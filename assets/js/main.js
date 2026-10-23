@@ -125,8 +125,28 @@ const explorerSystems = {
         risk:
             "Weak access controls, unpatched software, or exposed services.",
         opportunity:
-            "Map assets, strengthen authentication, and prioritize remediation."
+            "Map assets, strengthen authentication, and prioritize remediation.",
+        relationships: [
+    {
+        from: "Identity & access",
+        to: "Assets & data",
+        explanation:
+            "Access controls determine who can reach protected information."
     },
+    {
+        from: "Networks",
+        to: "Security controls",
+        explanation:
+            "Network visibility helps security controls detect suspicious activity."
+    },
+    {
+        from: "Security controls",
+        to: "Assets & data",
+        explanation:
+            "Effective controls can reduce the likelihood and impact of data exposure."
+    }
+  ]
+},
 
     ai: {
         category: "SYSTEM / 02",
@@ -143,7 +163,28 @@ const explorerSystems = {
         risk:
             "Poor data quality, unreliable outputs, or inadequate oversight.",
         opportunity:
-            "Evaluate model performance, data quality, and safeguards."
+            "Evaluate model performance, data quality, and safeguards.",
+
+        relationships: [
+    {
+        from: "Data",
+        to: "Models",
+        explanation:
+            "Training data influences model behavior and output quality."
+    },
+    {
+        from: "Models",
+        to: "Human oversight",
+        explanation:
+            "Review helps people identify unreliable or inappropriate outputs."
+    },
+    {
+        from: "Computing infrastructure",
+        to: "Models",
+        explanation:
+            "Available computing resources constrain model training and operation."
+    }
+]
     },
 
     infrastructure: {
@@ -161,7 +202,27 @@ const explorerSystems = {
         risk:
             "Supply disruptions, equipment failure, or energy constraints.",
         opportunity:
-            "Identify bottlenecks, dependencies, and resilience improvements."
+            "Identify bottlenecks, dependencies, and resilience improvements.",
+        relationships: [
+    {
+        from: "Energy & utilities",
+        to: "Equipment",
+        explanation:
+            "Equipment depends on reliable energy and utility services."
+    },
+    {
+        from: "Materials & logistics",
+        to: "Operations",
+        explanation:
+            "Material delays can disrupt production schedules."
+    },
+    {
+        from: "Operational controls",
+        to: "Equipment",
+        explanation:
+            "Monitoring and maintenance controls help manage equipment failure risks."
+    }
+]
     }
 };
 
@@ -174,6 +235,24 @@ function showSystem(systemKey) {
     const system = explorerSystems[systemKey];
 
     if (!system) return;
+
+    const relationshipList = document.getElementById("relationship-list");
+relationshipList.replaceChildren();
+
+system.relationships.forEach((relationship) => {
+    const card = document.createElement("article");
+    card.className = "relationship-card";
+
+    const path = document.createElement("p");
+    path.className = "relationship-path";
+    path.textContent = `${relationship.from} → ${relationship.to}`;
+
+    const explanation = document.createElement("p");
+    explanation.textContent = relationship.explanation;
+
+    card.append(path, explanation);
+    relationshipList.appendChild(card);
+});
 
     document.getElementById("system-category").textContent =
         system.category;
