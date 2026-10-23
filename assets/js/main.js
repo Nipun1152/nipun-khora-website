@@ -103,3 +103,117 @@ networkNodes.forEach((node) => {
         }
     });
 });
+
+/* =========================================
+   SYSTEMS EXPLORER
+   ========================================= */
+
+const explorerSystems = {
+    cybersecurity: {
+        category: "SYSTEM / 01",
+        title: "Cybersecurity",
+        description:
+            "Study how assets, identities, networks, and security " +
+            "controls work together. Investigate attack surfaces, " +
+            "potential vulnerabilities, and defensive strategies.",
+        components: [
+            "Assets & data",
+            "Identity & access",
+            "Networks",
+            "Security controls"
+        ],
+        risk:
+            "Weak access controls, unpatched software, or exposed services.",
+        opportunity:
+            "Map assets, strengthen authentication, and prioritize remediation."
+    },
+
+    ai: {
+        category: "SYSTEM / 02",
+        title: "Artificial Intelligence",
+        description:
+            "Explore how data, models, computing infrastructure, " +
+            "and human oversight combine to produce AI capabilities.",
+        components: [
+            "Data",
+            "Models",
+            "Computing infrastructure",
+            "Human oversight"
+        ],
+        risk:
+            "Poor data quality, unreliable outputs, or inadequate oversight.",
+        opportunity:
+            "Evaluate model performance, data quality, and safeguards."
+    },
+
+    infrastructure: {
+        category: "SYSTEM / 03",
+        title: "Industrial Infrastructure",
+        description:
+            "Investigate how energy, materials, equipment, logistics, " +
+            "and control systems interact in industrial operations.",
+        components: [
+            "Energy & utilities",
+            "Equipment",
+            "Materials & logistics",
+            "Operational controls"
+        ],
+        risk:
+            "Supply disruptions, equipment failure, or energy constraints.",
+        opportunity:
+            "Identify bottlenecks, dependencies, and resilience improvements."
+    }
+};
+
+const explorerButtons = document.querySelectorAll(
+    "#system-options button"
+);
+
+
+function showSystem(systemKey) {
+    const system = explorerSystems[systemKey];
+
+    if (!system) return;
+
+    document.getElementById("system-category").textContent =
+        system.category;
+
+    document.getElementById("system-title").textContent =
+        system.title;
+
+    document.getElementById("system-description").textContent =
+        system.description;
+
+    // Build the component list from the selected system.
+    const componentList = document.getElementById("system-components");
+    componentList.replaceChildren();
+
+    system.components.forEach((component) => {
+        const item = document.createElement("li");
+        item.textContent = component;
+        componentList.appendChild(item);
+    });
+
+    document.getElementById("system-risk").textContent =
+        system.risk;
+
+    document.getElementById("system-opportunity").textContent =
+        system.opportunity;
+
+    explorerButtons.forEach((button) => {
+        const selected = button.dataset.system === systemKey;
+
+        button.setAttribute("aria-pressed", String(selected));
+        button.classList.toggle("is-selected", selected);
+    });
+}
+
+
+explorerButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+        showSystem(button.dataset.system);
+    });
+});
+
+// Display the initial selection when the page loads.
+showSystem("cybersecurity");
