@@ -1,0 +1,350 @@
+
+/* =====================================
+   NIPUN KHORA — PERSONAL TECHNOLOGY LAB
+   Phase 1: Initial Design System
+   ===================================== */
+
+/* 1. Design tokens */
+
+:root {
+    --bg: #0b0e13;
+    --surface: #121720;
+    --surface-hover: #19212d;
+    --text: #edf2f7;
+    --muted: #a0adbd;
+    --accent: #77b8ff;
+    --border: #273242;
+
+    --content-width: 1280px;
+    --radius: 12px;
+}
+
+/* 2. Basic reset */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                 sans-serif;
+    line-height: 1.7;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--accent);
+}
+
+p {
+    color: var(--muted);
+}
+
+h1,
+h2,
+h3 {
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+}
+
+/* 3. Shared page width */
+
+header,
+main,
+footer {
+    width: min(100% - 48px, var(--content-width));
+    margin-inline: auto;
+}
+
+/* 4. Header and navigation */
+
+header {
+    min-height: 84px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    border-bottom: 1px solid var(--border);
+}
+
+header > a {
+    font-size: 0.95rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+nav a {
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+nav a:hover {
+    color: var(--text);
+}
+
+/* 5. Main content */
+
+main {
+    padding-bottom: 80px;
+}
+
+section {
+    padding-block: 64px;
+    border-bottom: 1px solid var(--border);
+}
+
+section > h2 {
+    font-size: clamp(1.6rem, 3vw, 2.1rem);
+    margin-top: 0;
+    margin-bottom: 24px;
+}
+
+/* 6. Hero section */
+
+#hero {
+    padding-block: 110px 100px;
+}
+
+#hero > p:first-child {
+    color: var(--accent);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+}
+
+#hero h1 {
+    max-width: 850px;
+    margin-block: 24px;
+    font-size: clamp(2.7rem, 7vw, 5.4rem);
+    letter-spacing: -0.065em;
+}
+
+#hero > p:not(:first-child) {
+    max-width: 680px;
+    font-size: 1.1rem;
+}
+
+#hero > a {
+    display: inline-block;
+    margin: 20px 12px 0 0;
+    padding: 12px 18px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+#hero > a:first-of-type {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #0b0e13;
+}
+
+#hero > a:hover {
+    transform: translateY(-2px);
+}
+
+/* 7. Current focus */
+
+#focus {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+#focus > h2 {
+    grid-column: 1 / -1;
+}
+
+#focus article,
+#projects,
+#learning,
+#research,
+#about {
+    min-width: 0;
+}
+
+#focus article {
+    padding: 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+#focus article h3 {
+    margin-top: 0;
+}
+
+/* 8. Footer */
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding-block: 24px;
+    font-size: 0.85rem;
+}
+
+/* 9. Responsive layout */
+
+@media (max-width: 760px) {
+    header {
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+        padding-block: 20px;
+    }
+
+    nav {
+        gap: 12px 18px;
+    }
+
+    #hero {
+        padding-block: 72px;
+    }
+
+    #focus {
+        grid-template-columns: 1fr;
+    }
+
+    section {
+        padding-block: 44px;
+    }
+
+    footer {
+        flex-direction: column;
+        gap: 0;
+    }
+}
+/* =====================================
+   PHASE 1 — SHARED DESIGN POLISH
+   ===================================== */
+
+/* Current page in navigation */
+
+nav a[aria-current="page"] {
+    color: var(--text);
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-underline-offset: 7px;
+}
+
+/* Internal page introductions */
+
+main > section:first-child:not(#hero) {
+    padding-block: 88px 64px;
+}
+
+main > section:first-child:not(#hero) > p:first-child {
+    color: var(--accent);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+}
+
+main > section:first-child:not(#hero) h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    letter-spacing: -0.06em;
+    margin-block: 20px;
+}
+
+main > section:first-child:not(#hero) > p:last-child {
+    max-width: 720px;
+    font-size: 1.08rem;
+}
+
+/* Consistent links */
+
+main section a {
+    color: var(--accent);
+}
+
+main section a:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+/* Project cards and content panels */
+
+main section article {
+    padding: 24px;
+    margin-top: 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+main section article h3 {
+    margin-top: 0;
+}
+
+/* Smooth, accessible interaction */
+
+a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 5px;
+    border-radius: 3px;
+}
+
+/* Respect reduced-motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
+
+/* Small-screen refinements */
+
+@media (max-width: 480px) {
+    header,
+    main,
+    footer {
+        width: calc(100% - 32px);
+    }
+
+    nav {
+        gap: 10px 14px;
+    }
+
+    nav a {
+        font-size: 0.85rem;
+    }
+
+    #hero h1 {
+        font-size: clamp(2.4rem, 11vw, 3.4rem);
+    }
+
+    #hero > a {
+        margin-right: 6px;
+    }
+}
+
