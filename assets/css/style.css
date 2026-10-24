@@ -348,3 +348,636 @@ a:focus-visible {
     }
 }
 
+/* =========================================
+   PHASE 2 — RESEARCH & INTELLIGENCE
+   ========================================= */
+
+:root {
+    --bg: #F6F5F1;
+    --surface: #FFFFFF;
+    --surface-hover: #E6E2D9;
+    --text: #171A1F;
+    --muted: #5B6068;
+    --accent: #243D5B;
+    --border: #D8D6D0;
+
+    /* Keep the wider layout you preferred */
+    --content-width: 1280px;
+}
+
+/* Editorial typography */
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+    line-height: 1.75;
+}
+
+h1,
+h2,
+h3 {
+    color: var(--text);
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 500;
+    letter-spacing: -0.025em;
+}
+
+/* Navigation */
+header {
+    border-bottom: 1px solid var(--border);
+}
+
+header > a {
+    color: var(--text);
+}
+
+nav a {
+    color: var(--muted);
+}
+
+nav a:hover,
+nav a[aria-current="page"] {
+    color: var(--text);
+}
+
+/* Homepage introduction */
+#hero {
+    padding-block: 120px 100px;
+}
+
+#hero h1 {
+    max-width: 900px;
+    font-weight: 500;
+}
+
+#hero > p:first-child {
+    color: var(--accent);
+}
+
+/* Primary and secondary links */
+#hero > a:first-of-type {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #FFFFFF;
+}
+
+#hero > a:not(:first-of-type) {
+    color: var(--text);
+    border-color: var(--border);
+}
+
+/* Research panels and project cards */
+#focus article,
+main section article {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    box-shadow: none;
+}
+
+main section a {
+    color: var(--accent);
+}
+
+main section a:hover {
+    color: var(--text);
+}
+
+/* Editorial section dividers */
+section {
+    border-bottom: 1px solid var(--border);
+}
+
+/* Keyboard accessibility */
+a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 5px;
+}
+
+/* Mobile spacing */
+@media (max-width: 760px) {
+    #hero {
+        padding-block: 76px 64px;
+    }
+}
+
+/* Phase 2: mission-led technology hero */
+
+#hero {
+    position: relative;
+    overflow: hidden;
+    margin-top: 32px;
+    padding: clamp(48px, 8vw, 104px)
+             clamp(24px, 6vw, 80px);
+    background:
+        radial-gradient(
+            circle at 85% 15%,
+            rgba(76, 112, 151, 0.22),
+            transparent 38%
+        ),
+        #171A1F;
+    border: 1px solid #303640;
+    border-bottom: 1px solid #303640;
+    border-radius: 4px;
+    color: #F6F5F1;
+}
+
+#hero h1 {
+    max-width: 850px;
+    color: #F6F5F1;
+    font-size: clamp(2.6rem, 6.5vw, 5rem);
+    line-height: 1.08;
+}
+
+#hero > p:first-child {
+    color: #8FB6DC;
+}
+
+#hero > p:not(:first-child) {
+    max-width: 650px;
+    color: #C4CAD2;
+}
+
+#hero > a:first-of-type {
+    background: #F6F5F1;
+    border-color: #F6F5F1;
+    color: #171A1F;
+}
+
+#hero > a:not(:first-of-type) {
+    color: #F6F5F1;
+    border-color: #69717D;
+}
+
+#hero > a:hover {
+    transform: translateY(-2px);
+}
+
+@media (max-width: 760px) {
+    #hero {
+        margin-top: 16px;
+        padding: 48px 24px;
+    }
+}
+
+/* =========================================
+   INTERACTIVE SYSTEMS INTELLIGENCE MAP
+   ========================================= */
+
+#network-map {
+    border-bottom: 1px solid var(--border);
+}
+
+#network-map .network-heading {
+    max-width: 700px;
+    margin-bottom: 30px;
+}
+
+#network-map .eyebrow {
+    color: var(--accent);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+}
+
+#network-map .network-heading h2 {
+    margin-bottom: 16px;
+}
+
+.network-panel {
+    overflow: hidden;
+    background: #111820;
+    color: #F6F5F1;
+    border: 1px solid #303B48;
+    border-radius: 4px;
+}
+
+.network-status,
+.network-footer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 16px 20px;
+    color: #AAB7C5;
+    font-size: 0.68rem;
+    letter-spacing: 0.09em;
+}
+
+.network-status {
+    border-bottom: 1px solid #303B48;
+}
+
+.network-status-right {
+    margin-left: auto;
+}
+
+.status-indicator {
+    width: 7px;
+    height: 7px;
+    flex: 0 0 7px;
+    background: #8FB6DC;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #8FB6DC;
+}
+
+.network-canvas {
+    width: 100%;
+    background: #111820;
+}
+
+#systems-svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    min-height: 280px;
+}
+
+.network-connections path {
+    fill: none;
+    stroke: #465666;
+    stroke-width: 1.2;
+}
+
+.network-signals path {
+    fill: none;
+    stroke: #8FB6DC;
+    stroke-width: 1.6;
+    stroke-dasharray: 3 15;
+    animation: signal-flow 5s linear infinite;
+    opacity: 0.8;
+}
+
+.network-node {
+    cursor: pointer;
+    outline: none;
+}
+
+.network-node .node-halo {
+    fill: #8FB6DC;
+    fill-opacity: 0.04;
+    stroke: #60758C;
+    stroke-opacity: 0.7;
+    stroke-width: 1;
+    transition: fill-opacity 180ms ease,
+                stroke 180ms ease;
+}
+
+.network-node .node-core {
+    fill: #8FB6DC;
+    transition: r 180ms ease;
+}
+
+.network-node .node-center {
+    fill: #FFFFFF;
+}
+
+.network-node text {
+    fill: #CAD4DF;
+    font-family: -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.7px;
+    pointer-events: none;
+}
+
+.network-node:hover .node-halo,
+.network-node:focus-visible .node-halo,
+.network-node.is-selected .node-halo {
+    fill-opacity: 0.16;
+    stroke: #A9D1F5;
+    stroke-opacity: 1;
+}
+
+.network-node.is-selected .node-core {
+    filter: url(#node-glow);
+}
+
+.network-node:focus-visible .node-halo {
+    stroke-width: 2.5;
+}
+
+.network-detail {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 24px;
+    border-top: 1px solid #303B48;
+}
+
+.network-detail-label {
+    color: #8FB6DC;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+}
+
+.network-detail h3 {
+    margin: 8px 0;
+    color: #F6F5F1;
+    font-size: 1.5rem;
+}
+
+.network-detail p:last-child {
+    max-width: 600px;
+    margin-bottom: 0;
+    color: #C4CAD2;
+    font-size: 0.92rem;
+}
+
+.network-detail-mark {
+    color: #8FB6DC;
+    font-size: 1.5rem;
+}
+
+.network-footer {
+    justify-content: space-between;
+    border-top: 1px solid #303B48;
+    font-size: 0.62rem;
+}
+
+@keyframes signal-flow {
+    to { stroke-dashoffset: -72; }
+}
+
+@media (max-width: 600px) {
+    #systems-svg {
+        min-height: 0;
+    }
+
+    .network-node text {
+        font-size: 13px;
+    }
+
+    .network-status,
+    .network-footer {
+        padding: 12px;
+        font-size: 0.58rem;
+    }
+
+    .network-detail {
+        padding: 18px;
+    }
+
+    .network-detail h3 {
+        font-size: 1.3rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .network-signals path {
+        animation: none;
+    }
+
+    .network-node .node-halo,
+    .network-node .node-core {
+        transition: none;
+    }
+}
+
+/* =========================================
+   SYSTEMS EXPLORER DETAIL PANELS
+   ========================================= */
+
+#explorer {
+    padding-block: 56px;
+    border-bottom: 1px solid var(--border);
+}
+
+#system-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 28px 0;
+}
+
+#system-options button {
+    padding: 12px 18px;
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    cursor: pointer;
+    font: inherit;
+    transition: background 160ms ease, color 160ms ease;
+}
+
+#system-options button:hover,
+#system-options button:focus-visible {
+    border-color: var(--accent);
+}
+
+#system-options button.is-selected {
+    background: var(--accent);
+    color: #FFFFFF;
+    border-color: var(--accent);
+}
+
+#system-details {
+    padding: 28px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+}
+
+#system-category {
+    color: var(--accent);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+}
+
+#system-title {
+    margin-bottom: 12px;
+}
+
+#system-description {
+    max-width: 760px;
+    color: var(--muted);
+}
+
+.explorer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 28px;
+}
+
+.explorer-card {
+    padding: 20px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+}
+
+.explorer-card h4 {
+    margin-top: 0;
+}
+
+.explorer-card p,
+.explorer-card li {
+    color: var(--muted);
+    font-size: 0.92rem;
+}
+
+.explorer-card ul {
+    padding-left: 20px;
+}
+
+.explorer-disclaimer {
+    color: var(--muted);
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+}
+
+@media (max-width: 760px) {
+    .explorer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    #system-details {
+        padding: 20px;
+    }
+}
+
+/* SYSTEM RELATIONSHIPS */
+
+#relationships-section {
+    padding-top: 44px;
+}
+
+#relationships-section > p:first-child {
+    color: var(--accent);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+}
+
+#relationship-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.relationship-card {
+    padding: 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+}
+
+.relationship-card .relationship-path {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.relationship-card p:last-child {
+    color: var(--muted);
+    font-size: 0.92rem;
+}
+
+@media (max-width: 760px) {
+    #relationship-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* INTERACTIVE DEPENDENCY MAP */
+
+#dependency-section {
+    padding-top: 44px;
+}
+
+#dependency-section > p:first-child {
+    color: var(--accent);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+}
+
+.dependency-panel {
+    overflow: hidden;
+    margin-top: 24px;
+    background: #111820;
+    color: #F6F5F1;
+    border: 1px solid #303B48;
+    border-radius: 4px;
+}
+
+.dependency-map {
+    width: 100%;
+    overflow-x: auto;
+}
+
+#dependency-svg {
+    display: block;
+    width: 100%;
+    min-width: 480px;
+    height: auto;
+    background-color: #111820;
+}
+
+.dependency-edge {
+    stroke: #8FB6DC;
+    stroke-width: 1.5;
+    opacity: 0.7;
+}
+
+.dependency-node {
+    cursor: pointer;
+    outline: none;
+}
+
+.dependency-node rect {
+    fill: #1C2B39;
+    stroke: #60758C;
+    stroke-width: 1.2;
+    rx: 5;
+}
+
+.dependency-node text {
+    fill: #F6F5F1;
+    font-size: 12px;
+    text-anchor: middle;
+    dominant-baseline: middle;
+    pointer-events: none;
+}
+
+.dependency-node.is-selected rect,
+.dependency-node:hover rect,
+.dependency-node:focus-visible rect {
+    fill: #243D5B;
+    stroke: #A9D1F5;
+    stroke-width: 2;
+}
+
+#dependency-details {
+    padding: 22px;
+    border-top: 1px solid #303B48;
+}
+
+#dependency-details p {
+    color: #C4CAD2;
+}
+
+#dependency-details #dependency-category {
+    color: #8FB6DC;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+}
+
+#dependency-details h4 {
+    color: #F6F5F1;
+    font-size: 1.25rem;
+}
+
+#dependency-details #dependency-connections {
+    font-size: 0.9rem;
+}
+
+@media (max-width: 600px) {
+    #dependency-svg {
+        min-width: 480px;
+    }
+}
+

@@ -12,6 +12,8 @@
 
 <body>
 
+<script src="assets/js/main.js" defer></script>
+
     <header>
         <a href="index.html">NIPUN KHORA</a>
 
@@ -21,6 +23,7 @@
             <a href="pages/tools.html">Tools</a>
             <a href="pages/research.html">Research</a>
             <a href="pages/about.html">About</a>
+            <a href="pages/systems-explorer.html">Systems Explorer</a>
         </nav>
     </header>
 
@@ -39,6 +42,175 @@
             <a href="pages/projects.html">Explore Projects</a>
             <a href="pages/learning-lab.html">Enter the Learning Lab</a>
         </section>
+
+<section id="network-map" aria-labelledby="network-title">
+    <div class="network-heading">
+        <p class="eyebrow">SYSTEMS / RELATIONSHIPS / SIGNALS</p>
+        <h2 id="network-title">Explore the system</h2>
+        <p>
+            Information becomes useful when we understand
+            how its parts connect. Select a node to explore
+            the role it plays in this conceptual intelligence system.
+        </p>
+    </div>
+
+    <div class="network-panel">
+        <div class="network-status">
+            <span class="status-indicator"></span>
+            CONCEPTUAL SYSTEM MAP
+            <span class="network-status-right">INTERACTIVE / 01</span>
+        </div>
+
+        <div class="network-canvas">
+            <svg id="systems-svg"
+                 viewBox="0 0 800 440"
+                 role="group"
+                 aria-label="Interactive network of data sources, analysis, systems, and outcomes">
+
+                <defs>
+                    <pattern id="network-grid"
+                             width="28" height="28"
+                             patternUnits="userSpaceOnUse">
+                        <path d="M 28 0 L 0 0 0 28"
+                              fill="none"
+                              stroke="#283440"
+                              stroke-width="0.7"/>
+                    </pattern>
+
+                    <filter id="node-glow"
+                            x="-100%" y="-100%"
+                            width="300%" height="300%">
+                        <feGaussianBlur stdDeviation="4"
+                                        result="blur"/>
+                        <feMerge>
+                            <feMergeNode in="blur"/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
+                </defs>
+
+                <rect width="800" height="440"
+                      fill="url(#network-grid)"/>
+
+                <g class="network-connections">
+                    <path d="M145 100 L305 105"/>
+                    <path d="M145 100 L205 220"/>
+                    <path d="M305 105 L430 205"/>
+                    <path d="M205 220 L430 205"/>
+                    <path d="M205 220 L350 340"/>
+                    <path d="M430 205 L570 110"/>
+                    <path d="M430 205 L570 315"/>
+                    <path d="M350 340 L570 315"/>
+                    <path d="M570 110 L680 215"/>
+                    <path d="M570 315 L680 215"/>
+                    <path d="M305 105 L570 110"/>
+                    <path d="M430 205 L680 215"/>
+                </g>
+
+                <g class="network-signals">
+                    <path d="M145 100 L305 105"/>
+                    <path d="M205 220 L430 205"/>
+                    <path d="M430 205 L570 110"/>
+                    <path d="M430 205 L570 315"/>
+                    <path d="M570 110 L680 215"/>
+                    <path d="M570 315 L680 215"/>
+                </g>
+
+                <g class="network-node is-selected"
+                   data-node="sources"
+                   tabindex="0" role="button"
+                   aria-label="Data sources">
+                    <circle class="node-halo" cx="145" cy="100" r="28"/>
+                    <circle class="node-core" cx="145" cy="100" r="6"/>
+                    <text x="145" y="72" text-anchor="middle">DATA SOURCES</text>
+                </g>
+
+                <g class="network-node"
+                   data-node="research"
+                   tabindex="0" role="button"
+                   aria-label="Research">
+                    <circle class="node-halo" cx="305" cy="105" r="23"/>
+                    <circle class="node-core" cx="305" cy="105" r="5"/>
+                    <text x="305" y="77" text-anchor="middle">RESEARCH</text>
+                </g>
+
+                <g class="network-node"
+                   data-node="systems"
+                   tabindex="0" role="button"
+                   aria-label="Systems">
+                    <circle class="node-halo" cx="205" cy="220" r="26"/>
+                    <circle class="node-core" cx="205" cy="220" r="6"/>
+                    <text x="205" y="253" text-anchor="middle">SYSTEMS</text>
+                </g>
+
+                <g class="network-node"
+                   data-node="analysis"
+                   tabindex="0" role="button"
+                   aria-label="Analysis">
+                    <circle class="node-halo" cx="430" cy="205" r="35"/>
+                    <circle class="node-core" cx="430" cy="205" r="9"/>
+                    <circle class="node-center" cx="430" cy="205" r="3"/>
+                    <text x="430" y="165" text-anchor="middle">ANALYSIS</text>
+                </g>
+
+                <g class="network-node"
+                   data-node="models"
+                   tabindex="0" role="button"
+                   aria-label="Models and tools">
+                    <circle class="node-halo" cx="350" cy="340" r="24"/>
+                    <circle class="node-core" cx="350" cy="340" r="5"/>
+                    <text x="350" y="372" text-anchor="middle">MODELS &amp; TOOLS</text>
+                </g>
+
+                <g class="network-node"
+                   data-node="intelligence"
+                   tabindex="0" role="button"
+                   aria-label="Intelligence">
+                    <circle class="node-halo" cx="570" cy="110" r="28"/>
+                    <circle class="node-core" cx="570" cy="110" r="6"/>
+                    <text x="570" y="77" text-anchor="middle">INTELLIGENCE</text>
+                </g>
+
+                <g class="network-node"
+                   data-node="decisions"
+                   tabindex="0" role="button"
+                   aria-label="Decisions">
+                    <circle class="node-halo" cx="570" cy="315" r="26"/>
+                    <circle class="node-core" cx="570" cy="315" r="6"/>
+                    <text x="570" y="348" text-anchor="middle">DECISIONS</text>
+                </g>
+
+                <g class="network-node"
+                   data-node="outcomes"
+                   tabindex="0" role="button"
+                   aria-label="Outcomes">
+                    <circle class="node-halo" cx="680" cy="215" r="30"/>
+                    <circle class="node-core" cx="680" cy="215" r="7"/>
+                    <text x="680" y="255" text-anchor="middle">OUTCOMES</text>
+                </g>
+            </svg>
+        </div>
+
+        <div class="network-detail" aria-live="polite">
+            <div>
+                <p class="network-detail-label" id="node-category">
+                    SYSTEM COMPONENT / 01
+                </p>
+                <h3 id="node-title">Data Sources</h3>
+                <p id="node-description">
+                    Reports, datasets, observations, and other
+                    inputs provide the raw material for investigation.
+                </p>
+            </div>
+            <span class="network-detail-mark" aria-hidden="true">↗</span>
+        </div>
+
+        <div class="network-footer">
+            <span>SELECT A NODE TO EXPLORE</span>
+            <span>ILLUSTRATIVE MODEL · NOT LIVE DATA</span>
+        </div>
+    </div>
+</section>
 
         <section id="focus">
             <h2>Current Focus</h2>
@@ -93,6 +265,21 @@
 
             <a href="pages/research.html">Explore Research</a>
         </section>
+
+
+<section id="systems-explorer">
+    <h2>Systems Explorer</h2>
+
+    <p>
+        Explore how components interact, how systems depend
+        on one another, and where risks and opportunities emerge.
+    </p>
+
+    <a href="pages/systems-explorer.html">
+        Explore Systems
+    </a>
+</section>
+
 
         <section id="about">
             <h2>About</h2>
