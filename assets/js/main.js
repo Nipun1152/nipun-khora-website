@@ -285,6 +285,7 @@ system.relationships.forEach((relationship) => {
         button.setAttribute("aria-pressed", String(selected));
         button.classList.toggle("is-selected", selected);
     });
+    renderDependencyMap(systemKey);
 }
 
 
@@ -294,5 +295,191 @@ explorerButtons.forEach((button) => {
     });
 });
 
-// Display the initial selection when the page loads.
+
+
+/* =========================================
+   INTERACTIVE DEPENDENCY MAP
+   ========================================= */
+
+const dependencyModels = {
+    cybersecurity: {
+        nodes: [
+            { id: "identity", label: "Identity & Access",
+              description: "Controls who can access systems and information." },
+            { id: "network", label: "Networks",
+              description: "Connect systems and carry information between them." },
+            { id: "controls", label: "Security Controls",
+              description: "Help detect, prevent, or limit security incidents." },
+            { id: "data", label: "Assets & Data",
+              description: "Information and resources that need protection." }
+        ],
+        edges: [
+            ["identity", "data"],
+            ["network", "controls"],
+            ["controls", "data"]
+        ]
+    },
+
+    ai: {
+        nodes: [
+            { id: "data", label: "Data",
+              description: "Examples and information used to develop and evaluate models." },
+            { id: "compute", label: "Computing",
+              description: "Hardware and infrastructure used to run AI workloads." },
+            { id: "models", label: "AI Models",
+              description: "Systems that process inputs and generate outputs." },
+            { id: "oversight", label: "Human Oversight",
+              description: "Review, evaluation, and governance of AI outputs." }
+        ],
+        edges: [
+            ["data", "models"],
+            ["compute", "models"],
+            ["models", "oversight"]
+        ]
+    },
+
+    infrastructure: {
+        nodes: [
+            { id: "energy", label: "Energy & Utilities",
+              description: "Power and utility services required for operations." },
+            { id: "equipment", label: "Equipment",
+              description: "Machinery and physical assets used in production." },
+            { id: "logistics", label: "Materials & Logistics",
+              description: "Supply and movement of materials and components." },
+            { id: "operations", label: "Operations",
+              description: "Processes that coordinate production and delivery." }
+        ],
+        edges: [
+            ["energy", "equipment"],
+            ["logistics", "operations"],
+            ["equipment", "operations"]
+        ]
+    }
+};
+
+function renderDependencyMap(systemKey) {
+    const model = dependencyModels[systemKey];
+    if (!model) return;
+
+    const nodeLayer = document.getElementById("dependency-nodes");
+    const edgeLayer = document.getElementById("dependency-edges");
+
+    nodeLayer.replaceChildren();
+    edgeLayer.replaceChildren();
+
+    const positions = [
+        { x: 35, y: 35 },
+        { x: 365, y: 35 },
+        { x: 35, y: 195 },
+        { x: 365, y: 195 }
+    ];
+
+    const nodeWidth = 220;
+    const nodeHeight = 54;
+    const nodePositions = {};
+
+    model.nodes.forEach((node, index) => {
+        const position = positions[index];
+        nodePositions[node.id] = {
+            x: position.x + nodeWidth / 2,
+            y: position.y + nodeHeight / 2
+        };
+    });
+    
+
+    model.edges.forEach(([from, to]) => {
+        const start = nodePositions[from];
+        const end = nodePositions[to];
+
+        const line = document.createElementNS(
+            "http://www.w3.org/2000/svg", "line"
+        );
+
+        line.setAttribute("x1", start.x);
+        line.setAttribute("y1", start.y);
+        line.setAttribute("x2", end.x);
+        line.setAttribute("y2", end.y);
+        line.setAttribute("class", "dependency-edge");
+        line.setAttribute("marker-end", "url(#dependency-arrow)");
+
+        edgeLayer.appendChild(line);
+    });
+
+    model.nodes.forEach((node, index) => {
+        const position = positions[index];
+
+        const group = document.createElementNS(
+            "http://www.w3.org/2000/svg", "g"
+        );
+
+        group.setAttribute("class", "dependency-node");
+        group.setAttribute("tabindex", "0");
+        group.setAttribute("role", "button");
+        group.setAttribute("aria-label", node.label);
+        group.dataset.node = node.id;
+
+        const rect = document.createElementNS(
+            "http://www.w3.org/2000/svg", "rect"
+        );
+        rect.setAttribute("x", position.x);
+        rect.setAttribute("y", position.y);
+        rect.setAttribute("width", nodeWidth);
+        rect.setAttribute("height", nodeHeight);
+
+        const text = document.createElementNS(
+            "http://www.w3.org/2000/svg", "text"
+        );
+        text.setAttribute("x", position.x + nodeWidth / 2);
+        text.setAttribute("y", position.y + nodeHeight / 2);
+        text.textContent = node.label;
+
+        group.append(rect, text);
+
+        function selectNode() {
+            nodeLayer.querySelectorAll(".dependency-node")
+                .forEach((item) => {
+                    const selected = item === group;
+                    item.classList.toggle("is-selected", selected);
+                    item.setAttribute("aria-pressed", String(selected));
+                });
+
+            document.getElementById("dependency-category").textContent =
+                "COMPONENT / " + String(index + 1).padStart(2, "0");
+
+            document.getElementById("dependency-title").textContent =
+                node.label;
+
+            document.getElementById("dependency-description").textContent =
+                node.description;
+
+            const connections = model.edges
+                .filter(([from, to]) => from === node.id || to === node.id)
+                .map(([from, to]) => {
+                    const source = model.nodes.find(item => item.id === from);
+                    const target = model.nodes.find(item => item.id === to);
+                    return source.label + " → " + target.label;
+                });
+
+            document.getElementById("dependency-connections").textContent =
+                connections.length
+                    ? "Connected relationships: " + connections.join("; ")
+                    : "No direct relationships are defined for this component.";
+        }
+
+        group.addEventListener("click", selectNode);
+        group.addEventListener("keydown", (event) => {
+            if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                selectNode();
+            }
+        });
+
+        nodeLayer.appendChild(group);
+    });
+
+    // Select the first node by default.
+    const firstNode = nodeLayer.querySelector(".dependency-node");
+    if (firstNode) firstNode.dispatchEvent(new Event("click"));
+}
+// Initialize the Systems Explorer after all data and functions exist.
 showSystem("cybersecurity");

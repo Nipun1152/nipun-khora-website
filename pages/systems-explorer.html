@@ -14,10 +14,11 @@
         <a href="../index.html">NIPUNKHORA</a>
 
         <nav aria-label="Main navigation">
-            <a href="../index.html">Home</a>
             <a href="projects.html">Projects</a>
             <a href="research.html">Research</a>
             <a href="learning-lab.html">Learning Lab</a>
+            <a href="tools.html">Tools</a>
+            <a href="about.html">About</a>
             <a href="systems-explorer.html" aria-current="page">Systems Explorer</a>
         </nav>
     </header>
@@ -89,6 +90,50 @@
     </p>
 
     <div id="relationship-list" aria-live="polite"></div>
+
+
+<section id="dependency-section">
+    <p>STRUCTURE / DEPENDENCIES / FLOW</p>
+    <h3>Dependency Map</h3>
+    <p>
+        Select a component to examine its role in the system
+        and understand its connections.
+    </p>
+
+    <div class="dependency-panel">
+        <div class="dependency-map">
+            <svg id="dependency-svg"
+                 viewBox="0 0 700 300"
+                 role="group"
+                 aria-label="Interactive system dependency map">
+
+                <defs>
+                    <marker id="dependency-arrow"
+                            markerWidth="8"
+                            markerHeight="8"
+                            refX="6"
+                            refY="3"
+                            orient="auto">
+                        <path d="M0,0 L0,6 L6,3 Z" fill="#8FB6DC"/>
+                    </marker>
+                </defs>
+
+                <g id="dependency-edges"></g>
+                <g id="dependency-nodes"></g>
+            </svg>
+        </div>
+
+        <div id="dependency-details" aria-live="polite">
+            <p id="dependency-category">COMPONENT / 01</p>
+            <h4 id="dependency-title">Identity & Access</h4>
+            <p id="dependency-description">
+                Select a component in the map to examine its role.
+            </p>
+            <p id="dependency-connections"></p>
+        </div>
+    </div>
+</section>
+
 </section>
 
 </div>

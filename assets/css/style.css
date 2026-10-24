@@ -883,3 +883,101 @@ a:focus-visible {
     }
 }
 
+/* INTERACTIVE DEPENDENCY MAP */
+
+#dependency-section {
+    padding-top: 44px;
+}
+
+#dependency-section > p:first-child {
+    color: var(--accent);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+}
+
+.dependency-panel {
+    overflow: hidden;
+    margin-top: 24px;
+    background: #111820;
+    color: #F6F5F1;
+    border: 1px solid #303B48;
+    border-radius: 4px;
+}
+
+.dependency-map {
+    width: 100%;
+    overflow-x: auto;
+}
+
+#dependency-svg {
+    display: block;
+    width: 100%;
+    min-width: 480px;
+    height: auto;
+    background-color: #111820;
+}
+
+.dependency-edge {
+    stroke: #8FB6DC;
+    stroke-width: 1.5;
+    opacity: 0.7;
+}
+
+.dependency-node {
+    cursor: pointer;
+    outline: none;
+}
+
+.dependency-node rect {
+    fill: #1C2B39;
+    stroke: #60758C;
+    stroke-width: 1.2;
+    rx: 5;
+}
+
+.dependency-node text {
+    fill: #F6F5F1;
+    font-size: 12px;
+    text-anchor: middle;
+    dominant-baseline: middle;
+    pointer-events: none;
+}
+
+.dependency-node.is-selected rect,
+.dependency-node:hover rect,
+.dependency-node:focus-visible rect {
+    fill: #243D5B;
+    stroke: #A9D1F5;
+    stroke-width: 2;
+}
+
+#dependency-details {
+    padding: 22px;
+    border-top: 1px solid #303B48;
+}
+
+#dependency-details p {
+    color: #C4CAD2;
+}
+
+#dependency-details #dependency-category {
+    color: #8FB6DC;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+}
+
+#dependency-details h4 {
+    color: #F6F5F1;
+    font-size: 1.25rem;
+}
+
+#dependency-details #dependency-connections {
+    font-size: 0.9rem;
+}
+
+@media (max-width: 600px) {
+    #dependency-svg {
+        min-width: 480px;
+    }
+}
+
