@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookshelf | Nipun Khora</title>
+    <meta name="description" content="A personal archive of books, ideas, and ongoing learning by Nipun Khora.">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/books.css">
+    <script src="../assets/js/books.js?v=20261108" defer></script>
+</head>
+<body class="books-page">
+    <header>
+        <a href="../index.html">NIPUN KHORA</a>
+        <nav aria-label="Main navigation">
+            <a href="projects.html">Projects</a>
+            <a href="learning-lab.html">Learning Lab</a>
+            <a href="books.html" aria-current="page">Books</a>
+            <a href="research.html">Research</a>
+            <a href="systems-explorer.html">Systems Explorer</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="books-hero" aria-labelledby="books-title">
+            <div class="books-hero-copy">
+                <p class="books-kicker">PERSONAL ARCHIVE / READING &amp; IDEAS</p>
+                <h1 id="books-title">My Bookshelf.</h1>
+                <p class="books-lede">A personal archive of books, ideas, and ongoing learning.</p>
+                <p class="books-intro">
+                    This is a growing space for the books that shape questions,
+                    deepen technical understanding, and open new lines of inquiry.
+                </p>
+                <div class="books-actions" aria-label="Bookshelf links">
+                    <a class="books-button books-button-primary" href="#collection">Explore the collection</a>
+                    <a class="books-button" href="#currently-reading">Currently reading</a>
+                </div>
+            </div>
+
+            <div class="books-orbit" aria-hidden="true">
+                <span class="orbit-line orbit-line-one"></span>
+                <span class="orbit-line orbit-line-two"></span>
+                <span class="floating-book floating-book-one"><span></span></span>
+                <span class="floating-book floating-book-two"><span></span></span>
+                <span class="floating-book floating-book-three"><span></span></span>
+                <span class="floating-book floating-book-four"><span></span></span>
+            </div>
+        </section>
+
+        <section id="currently-reading" class="books-section books-reading" aria-labelledby="reading-title">
+            <div class="section-heading">
+                <p class="books-kicker">01 / IN PROGRESS</p>
+                <h2 id="reading-title">Currently Reading</h2>
+            </div>
+            <div class="empty-state empty-state-reading">
+                <span class="empty-mark" aria-hidden="true">◌</span>
+                <div>
+                    <h3>A quiet shelf, for now.</h3>
+                    <p>Featured reading and progress notes will appear here when the first titles are added.</p>
+                </div>
+                <span class="empty-index">READ / 00</span>
+            </div>
+            <div id="currently-reading-list" class="currently-reading-list" aria-live="polite"></div>
+        </section>
+
+        <section class="books-section" aria-labelledby="subjects-title">
+            <div class="section-heading section-heading-wide">
+                <p class="books-kicker">02 / INDEX</p>
+                <h2 id="subjects-title">Explore by Subject</h2>
+                <p>Browse the questions and disciplines that give this archive its shape.</p>
+            </div>
+            <div class="subject-grid">
+                <button class="subject-card" type="button" data-category="Biographies &amp; Memoirs"><span class="subject-number">01</span><h3>Biographies &amp; Memoirs</h3><p>Lives, decisions, and the stories behind significant work.</p><span class="subject-arrow" aria-hidden="true">↗</span></button>
+                <button class="subject-card" type="button" data-category="Computer Science"><span class="subject-number">02</span><h3>Computer Science</h3><p>Ideas, systems, and methods for understanding computation.</p><span class="subject-arrow" aria-hidden="true">↗</span></button>
+                <button class="subject-card" type="button" data-category="Mathematics"><span class="subject-number">03</span><h3>Mathematics</h3><p>Structures, proofs, patterns, and precise ways of thinking.</p><span class="subject-arrow" aria-hidden="true">↗</span></button>
+                <button class="subject-card" type="button" data-category="Economics"><span class="subject-number">04</span><h3>Economics</h3><p>Markets, incentives, institutions, and the choices between them.</p><span class="subject-arrow" aria-hidden="true">↗</span></button>
+                <button class="subject-card" type="button" data-category="Business &amp; Finance"><span class="subject-number">05</span><h3>Business &amp; Finance</h3><p>Organizations, capital, strategy, and responsible execution.</p><span class="subject-arrow" aria-hidden="true">↗</span></button>
+                <button class="subject-card" type="button" data-category="Science &amp; Engineering"><span class="subject-number">06</span><h3>Science &amp; Engineering</h3><p>Evidence, design, experimentation, and the built world.</p><span class="subject-arrow" aria-hidden="true">↗</span></button>
+                <button class="subject-card" type="button" data-category="History &amp; Civilization"><span class="subject-number">07</span><h3>History &amp; Civilization</h3><p>Long arcs, institutions, and the forces that shape societies.</p><span class="subject-arrow" aria-hidden="true">↗</span></button>
+                <button class="subject-card" type="button" data-category="Philosophy &amp; Psychology"><span class="subject-number">08</span><h3>Philosophy &amp; Psychology</h3><p>Meaning, perception, behavior, and the examined life.</p><span class="subject-arrow" aria-hidden="true">↗</span></button>
+            </div>
+        </section>
+
+        <section id="collection" class="books-section collection-section" aria-labelledby="collection-title">
+            <div class="collection-heading">
+                <div class="section-heading">
+                    <p class="books-kicker">03 / ARCHIVE</p>
+                    <h2 id="collection-title">The Collection</h2>
+                </div>
+                <p class="collection-note">Search, filter, and sort the archive as titles are added.</p>
+            </div>
+            <div class="catalog-toolbar" aria-label="Catalog controls">
+                <div class="catalog-search">
+                    <label for="book-search">Search the collection</label>
+                    <div class="search-field">
+                        <input id="book-search" type="search" placeholder="Search title, author, subject, or tag" autocomplete="off">
+                        <button id="clear-search" class="clear-search" type="button" aria-label="Clear search" hidden>Clear</button>
+                    </div>
+                </div>
+                <div class="catalog-sort">
+                    <label for="book-sort">Sort by</label>
+                    <select id="book-sort">
+                        <option value="title-asc">Title A–Z</option>
+                        <option value="title-desc">Title Z–A</option>
+                        <option value="author-asc">Author A–Z</option>
+                        <option value="recent">Recently Added</option>
+                    </select>
+                </div>
+            </div>
+            <div class="category-filter" aria-labelledby="category-filter-label">
+                <span id="category-filter-label" class="filter-label">Filter by subject</span>
+                <div class="category-filter-list">
+                    <button class="category-filter-button is-active" type="button" data-category="" aria-pressed="true">All Books</button>
+                    <button class="category-filter-button" type="button" data-category="Biographies &amp; Memoirs" aria-pressed="false">Biographies &amp; Memoirs</button>
+                    <button class="category-filter-button" type="button" data-category="Computer Science" aria-pressed="false">Computer Science</button>
+                    <button class="category-filter-button" type="button" data-category="Mathematics" aria-pressed="false">Mathematics</button>
+                    <button class="category-filter-button" type="button" data-category="Economics" aria-pressed="false">Economics</button>
+                    <button class="category-filter-button" type="button" data-category="Business &amp; Finance" aria-pressed="false">Business &amp; Finance</button>
+                    <button class="category-filter-button" type="button" data-category="Science &amp; Engineering" aria-pressed="false">Science &amp; Engineering</button>
+                    <button class="category-filter-button" type="button" data-category="History &amp; Civilization" aria-pressed="false">History &amp; Civilization</button>
+                    <button class="category-filter-button" type="button" data-category="Philosophy &amp; Psychology" aria-pressed="false">Philosophy &amp; Psychology</button>
+                </div>
+            </div>
+            <p id="catalog-status" class="catalog-status" role="status" aria-live="polite"></p>
+            <div id="book-grid" class="book-grid" aria-live="polite"></div>
+            <div id="catalog-empty" class="catalog-state collection-empty">
+                <div class="collection-signal" aria-hidden="true"><span></span><span></span><span></span></div>
+                <h3 id="catalog-empty-title">The collection is being assembled.</h3>
+                <p id="catalog-empty-message">No book entries have been added yet. This shelf will become a searchable catalog when the reading data is ready.</p>
+                <span id="catalog-empty-index" class="empty-index">CATALOG / 00 ITEMS</span>
+            </div>
+        </section>
+
+        <section class="books-section journal-section" aria-labelledby="journal-title">
+            <div class="section-heading section-heading-wide">
+                <p class="books-kicker">04 / MARGINALIA</p>
+                <h2 id="journal-title">Reading Journal</h2>
+                <p>A place for personal notes, reflections, and ideas that remain after the last page.</p>
+            </div>
+            <div class="empty-state journal-empty">
+                <span class="journal-line" aria-hidden="true"></span>
+                <div>
+                    <h3>Notes will follow the reading.</h3>
+                    <p>The journal is intentionally open until there are reflections worth preserving.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <dialog id="book-details-dialog" class="book-details-dialog" aria-labelledby="book-details-title">
+        <div class="book-details-shell">
+            <button id="book-details-close" class="book-details-close" type="button" aria-label="Close book details">Close</button>
+            <div id="book-details-content" class="book-details-content"></div>
+        </div>
+    </dialog>
+
+    <footer>
+        <p>&copy; 2026 Nipun Khora</p>
+        <a href="../index.html">Back to Home</a>
+    </footer>
+</body>
+</html>
