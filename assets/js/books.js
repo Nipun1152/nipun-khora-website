@@ -80,7 +80,8 @@ function isSafeCoverSource(source) {
     if (!source || /^(javascript|data|blob):/i.test(source) || source.startsWith("//")) return false;
 
     try {
-        const url = new URL(source, document.baseURI);
+        const resolvedSource = source.startsWith("assets/") ? `../${source}` : source;
+        const url = new URL(resolvedSource, document.baseURI);
         return url.protocol === "https:" || (url.origin === window.location.origin && url.protocol === window.location.protocol);
     } catch {
         return false;
@@ -119,7 +120,7 @@ function createCover(book) {
     if (!isSafeCoverSource(book.cover)) return createFallbackCover(book);
 
     const image = createElement("img", "book-cover");
-    image.src = book.cover;
+    image.src = book.cover.startsWith("assets/") ? `../${book.cover}` : book.cover;
     image.alt = `Cover of ${book.title}`;
     image.addEventListener("error", () => {
         image.replaceWith(createFallbackCover(book));
