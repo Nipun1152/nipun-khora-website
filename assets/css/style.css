@@ -981,3 +981,192 @@ a:focus-visible {
     }
 }
 
+/* =========================================
+   UI-01 — GLOBAL THEME SYSTEM
+   ========================================= */
+
+:root {
+    color-scheme: light;
+    --bg: #F6F5F1;
+    --surface: #FFFFFF;
+    --surface-hover: #E6E2D9;
+    --text: #171A1F;
+    --muted: #5B6068;
+    --accent: #243D5B;
+    --border: #D8D6D0;
+    --theme-menu-bg: #FFFFFF;
+    --theme-shadow: 0 12px 30px rgba(23, 26, 31, .14);
+    --book-visual: #EEF0EE;
+}
+
+:root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #0D121A;
+    --surface: #151D28;
+    --surface-hover: #202C3A;
+    --text: #F1F4F7;
+    --muted: #B1BBC7;
+    --accent: #9CCBFA;
+    --border: #344252;
+    --theme-menu-bg: #151D28;
+    --theme-shadow: 0 14px 32px rgba(0, 0, 0, .34);
+    --book-visual: #1B2632;
+}
+
+body,
+header,
+footer,
+section,
+main section article,
+button,
+input,
+select,
+textarea {
+    transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease;
+}
+
+header nav {
+    align-items: center;
+}
+
+.theme-control {
+    position: relative;
+    flex: 0 0 auto;
+}
+
+.theme-button {
+    display: inline-flex;
+    min-height: 40px;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 10px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    font: inherit;
+    font-size: .78rem;
+    font-weight: 700;
+}
+
+.theme-button:hover,
+.theme-button[aria-expanded="true"] {
+    border-color: var(--accent);
+    color: var(--text);
+}
+
+.theme-button:focus-visible,
+.theme-menu button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+.theme-button-icon,
+.theme-choice-icon {
+    color: var(--accent);
+    font-size: 1rem;
+    line-height: 1;
+}
+
+.theme-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    z-index: 20;
+    min-width: 148px;
+    padding: 6px;
+    border: 1px solid var(--border);
+    background: var(--theme-menu-bg);
+    box-shadow: var(--theme-shadow);
+}
+
+.theme-menu[hidden] {
+    display: none;
+}
+
+.theme-menu button {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 22px 1fr 18px;
+    align-items: center;
+    gap: 7px;
+    min-height: 40px;
+    padding: 8px 9px;
+    border: 0;
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+    font: inherit;
+    font-size: .82rem;
+    text-align: left;
+}
+
+.theme-menu button:hover,
+.theme-menu button.is-selected {
+    background: var(--surface-hover);
+}
+
+.theme-check {
+    color: var(--accent);
+    font-weight: 800;
+    text-align: center;
+}
+
+:root[data-theme="dark"] .network-panel,
+:root[data-theme="dark"] .dependency-panel {
+    border-color: #46586B;
+}
+
+:root[data-theme="dark"] .books-page .empty-state {
+    background: rgba(21, 29, 40, .72);
+}
+
+:root[data-theme="dark"] .books-page .status-currently-reading {
+    color: #9CCBFA;
+}
+
+:root[data-theme="dark"] .books-page .status-completed {
+    color: #B5D6B5;
+}
+
+:root[data-theme="dark"] .books-page .status-paused {
+    color: #E0C387;
+}
+
+.books-page .book-card-visual {
+    background: var(--book-visual);
+}
+
+@media (max-width: 760px) {
+    .theme-button-text {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        clip-path: inset(50%);
+        white-space: nowrap;
+    }
+
+    .theme-button {
+        width: 42px;
+        justify-content: center;
+        padding-inline: 8px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body,
+    header,
+    footer,
+    section,
+    main section article,
+    button,
+    input,
+    select,
+    textarea {
+        transition-duration: 0.01ms !important;
+    }
+}
+
